@@ -1,0 +1,148 @@
+
+@mixin navBarItems {
+    border-radius: 10px;
+    margin: 20px auto;
+    height: 35px;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    justify-content: left;
+    gap: 10px;
+    padding-left: 15px;
+    opacity: 0;
+    transition: background-color 1s ease;
+    cursor: pointer;
+}
+.sidebar{
+    height: 800px;
+    background-color: #000;
+    margin: 75px;
+    border-radius: 15px;
+    padding: 20px;
+    border: 1px solid #000;
+    position: relative;
+    transition: width 500ms;
+}
+.logo-container{
+   
+    margin-bottom: 20px;
+    position: relative;
+    .toggle-btn{
+        position:absolute;
+        color: #fff;
+        right: -35px;
+        opacity: 0;
+        top: 10px;
+        font-size: 16px;
+        background-color: #122f47;
+        border: none;
+        border-radius: 50%;
+        padding: 7px 10px;
+        animation: togbutton 400ms linear 0.4s forwards
+    }
+    @keyframes togbutton {
+        from{opacity: 1; right: -100px}
+        to{opacity: 1 ;right: -35}
+    }
+    .logoText{
+        font-weight: 700;
+        font-size: 23px;
+        position: absolute;
+        top: 5px;
+        left: 45px;
+    }
+    .toggle-btn-close{
+        position:absolute;
+        color: #fff;
+        right: -60px;
+        top: 10px;
+        font-size: 16px;
+        background-color: #000;
+        border: none;
+        border-radius: 50%;
+        padding: 7px 10px;
+        transition: background-color 500ms;
+    }
+
+  
+
+    .imageContainer{
+        width: 40px;
+        margin-right: 5px;
+        margin-left: 3px;
+            img{
+                width: 100%;
+            }
+    }    
+}
+
+    .route-block{
+        @include navBarItems();
+        animation: dropDown 0.3s linear forwards
+    }
+    .route-block:nth-child(1){
+        animation-delay: 0.05s;
+    }
+    .route-block:nth-child(2){
+        animation-delay: 0.1s;
+    }
+    .route-block:nth-child(3){
+        animation-delay: 0.15s;
+    }
+    .route-block:nth-child(4){
+        animation-delay: 0.2s;
+    }
+    .route-block:nth-child(5){
+        animation-delay: 0.25s;
+    }
+    .route-block:nth-child(6){
+        animation-delay: 0.3s;
+    }
+    @keyframes dropDown {
+            0%{
+                opacity: 0.2
+            }
+            
+            100%{
+                opacity: 1
+            }
+        }
+
+    .route-block:first-child.active{
+        /*  это только для демонстрации, а так если создать отдельный компонент 
+            для каждого элемента навбара  то ":first-child" не нужен будет */    
+        background-color: rgb(13, 13, 67);
+    }
+    .route-block:hover, .route-bottom-block:hover{
+        background-color: #888;
+    }
+
+
+.bottom-block{
+    width: inherit;
+    position: absolute;
+    bottom: 0;
+}
+.route-bottom-block{
+    @include navBarItems();
+    animation: dropUp 0.3s linear forwards
+
+}
+
+.route-bottom-block:nth-child(2){
+    animation-delay: 0.1s;
+}
+.route-bottom-block:nth-child(1){
+    animation-delay: 0.2s;
+}
+
+@keyframes dropUp {
+    0%{
+        opacity: 0.2
+    }
+    
+    100%{
+        opacity: 1
+    }
+}
+
